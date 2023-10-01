@@ -1,6 +1,6 @@
 #!/bin/sh
 cd goinfre
-mkdir docker
+mkdir -p docker
 rm -rf ~/Library/Containers/com.docker.docker
 ln -s ~/goinfre/docker ~/Library/Containers/com.docker.docker
 
