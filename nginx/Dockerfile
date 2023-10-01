@@ -13,6 +13,6 @@ COPY ./nginx.conf /etc/nginx/http.d/
 
 # COPY ./index.html /var/www/html/
 
-EXPOSE 8081
+EXPOSE 443
 
 CMD ["nginx" ,"-g", "daemon off;"]
