@@ -1,6 +1,7 @@
 #!/bin/sh
 
-DIRECTORY=/var/www/html
+DIRECTORY=/var/www/html/wordpress
+
 if [ -d "$DIRECTORY" ]
 then 
     echo "exist"
