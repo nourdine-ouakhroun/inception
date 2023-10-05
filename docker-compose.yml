@@ -5,22 +5,32 @@ services:
     build: ./nginx
     container_name: nginx
     volumes:
-      - myvolume:/var/www/html
+      - wp:/var/www/html
     ports:
       - "443:443"
     restart: always
   mariadb:
     build: ./mariadb
     container_name: mariadb
+    volumes:
+      - db:/var/lib/mysql
     restart: always
   wordpress:
     build: ./wordpress
     container_name: wordpress
     volumes:
-      - myvolume:/var/www/html
+      - wp:/var/www/html
     restart: always
 volumes:
-  myvolume:
+  wp:
     driver: local
     driver_opts:
-      device: ~/Desctop/inception
+      o: bind
+      type: none
+      device: /Users/nouakhro/Desktop/inception/wp
+  db:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /Users/nouakhro/Desktop/inception/db
