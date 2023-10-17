@@ -1,12 +1,10 @@
 #!/bin/sh
 
 
-# ls "/var/www/html/wordpress/"
 if [ -f "/var/www/html/wordpress/wp-config.php" ]
 then 
     echo "exist"
     exec "$@"
-    exit 0
 fi
 
 if [ ! -d "/usr/local/bin/WPCLI" ] 
