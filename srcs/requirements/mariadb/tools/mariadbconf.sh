@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ -d  "/var/lib/mysql/db_wordpress" ]
+if [ -d  "/var/lib/mysql/${DATABASE_NAME}" ]
 then 
     echo "exist"
 else

@@ -1,19 +1,22 @@
 
-CREAT_VOLUMFOLDERS = /srcs/requirements/tool/setupfolders.sh
+CREAT_VOLUMFOLDERS = /srcs/requirements/tools/setupfolders.sh
+RM_VOLUMFOLDERS = /srcs/requirements/tools/remove_folders.sh
 
-RUN_SCREPT = runscrept
 
 all : $(RUN_SCREPT)
-	docker compose -f srcs/docker-compose.yml up -d
-
-$(RUN_SCREPT) : 
-	sh ./$(CREAT_VOLUMFOLDERS)
+	@echo "\033[0;31msetup volumes path, files ...\033[0m"
+	@sh ./$(CREAT_VOLUMFOLDERS)
+	@echo "\033[0;32mDONE\033[0m"
+	@echo "\033[0;31mcreat contaners...\033[0m"
+	@docker compose -f srcs/docker-compose.yml up
+	@echo "\033[0;32mDONE\033[0m"
 
 clean :
 	docker compose -f srcs/docker-compose.yml down -v
 
-fclean :
+fclean : 
 	docker compose -f srcs/docker-compose.yml down -v
 	docker system prune -af
+	sh ./$(RM_VOLUMFOLDERS)
 
 

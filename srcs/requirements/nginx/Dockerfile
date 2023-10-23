@@ -4,14 +4,11 @@ RUN apk update && apk add nginx
 
 RUN apk add openssl
 
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+RUN openssl req -x509 -noenc -days 30 -newkey rsa:4096 \
 -keyout /etc/ssl/private/nginx.key \
 -out /etc/ssl/certs/nginx.crt \
--subj "/C=MA/ST=SOUS MASA/L=TATA/O=1337/CN=nouakhro.42.com"
+-subj "/C=MA/ST=SOUS MASA/L=TATA/O=1337 med/CN=nouakhro.42.com"
 
-COPY ./nginx.conf /etc/nginx/http.d/
-
-
-EXPOSE 443
+COPY ./conf/nginx.conf /etc/nginx/http.d/
 
 CMD ["nginx" ,"-g", "daemon off;"]

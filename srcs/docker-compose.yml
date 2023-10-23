@@ -19,8 +19,6 @@ services:
     container_name: wordpress
     env_file :
       - .env
-    depends_on:
-      - mariadb
     expose:
       - "9000"
     volumes:
@@ -28,6 +26,8 @@ services:
     restart: always
     networks :
       - mynetwork
+    depends_on:
+      - mariadb
 
   nginx:
     build: ./requirements/nginx
